@@ -312,6 +312,7 @@ impl<'a, W: Write> Writer<'a, W> {
                 .map_err(Error::WriteBytes)?
             + self.append_marker()?;
 
+        self.writer.flush()?;
         self.buffer.clear();
         self.num_values = 0;
 
